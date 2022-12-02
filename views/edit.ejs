@@ -1,0 +1,46 @@
+<div style="width: 410px;height:470px" class="flex">
+    <div  class=" m-auto w-1/12 hover:w-5/12 bg-blue-400 h-full transition-all"> 
+        <%- include('menu/menu.ejs') %> 
+    </div>
+    <div   class="container h-full m-auto w-11/12 bg-cover  bg-white flex bg-[url('https://images.unsplash.com/photo-1472289065668-ce650ac443d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8eWVsbG93JTIwYm9va3xlbnwwfHwwfHw%3D&w=1000&q=80')]  items-center flex-col text-center">
+        <div class="mt-8">
+            <% if (message) { %>
+                <p class="text-xl font-bold"> <%= message %> </p>
+             <% } else { %>
+                <p class="text-xl font-bold">Edit Here !</p>
+            <% } %>
+            
+        </div>
+       <form action="/edit" method="post" class="w-full pt-2 transition-all px-5">
+        <div class="my-4 flex">
+            <input value="<%= user.name %>" class="w-full    h-8 pl-10 font-bold focus:border-none focus:outline-none" type="text" name="name" id="" placeholder="Full Name "><i class="fas fa-user  absolute mt-2 ml-2"></i>
+        </div>
+        <div class="my-4 flex">
+            <input  value="<%= user.email %>" class="w-full   h-8 pl-10 font-bold focus:border-none focus:outline-none" type="email" name="email" id="" placeholder="Enter your email!"><i class="fas fa-envelope absolute mt-2 ml-2"></i>
+        </div>
+        
+        <div class="my-4 flex">
+            <input  value="<%= user.cell %>" class="w-full   h-8 pl-10 font-bold focus:border-none focus:outline-none" type="text" name="cell" id="" placeholder="Enter your Mobile!"><i class="fas fa-phone absolute mt-2 ml-2"></i>
+        </div>
+       
+        <div class="my-4 flex">
+            <select name="location" class="w-full text-gray-400  h-8 pl-10 font-bold focus:border-none focus:outline-none" id="">
+                <option  class="text-gray-200 font-bold" >Location</option>
+                <option <%= (user.location =="Mirpur")? "selected":"" %>  class="text-gray-600 font-bold" value="Mirpur">Mirpur</option>
+                <option <%= (user.location =="Badda")? "selected":"" %>  class="text-gray-600 font-bold" value="Badda">Badda</option>
+                <option <%= (user.location =="Uttara")? "selected":"" %>  class="text-gray-600 font-bold" value="Uttara">Uttara</option>
+                <option <%= (user.location =="Motijil")? "selected":"" %>  class="text-gray-600 font-bold" value="Motijil">Motijil</option>
+                <option <%= (user.location =="Bonani")? "selected":"" %>  class="text-gray-600 font-bold" value="Bonani">Bonani</option>
+            </select><i class="fa-solid fa-street-view absolute mt-2 ml-2"></i>
+        </div>
+        <div class="my-4 flex items-center">
+            <input type="checkbox" class="w-5  block   h-5 py-1 inline-block mr-1 transition-all uppercase hover:bg-pink-400" name="" id="">
+            <span class="font-thin">I agree to all the term,privecy,policy and fees !</span>
+        </div>
+        <div class="my-4">
+            <button class="w-full  block bg-blue-400  h-8 py-1 transition-all uppercase hover:bg-pink-400 hover:text-white  font-bold " type="submit" >Update</button>
+        </div>
+        <span class="font-bold">Already i have an account ?</span> <a href="/login" class="font-bold text-pink-700">Login!</a>
+       </form>
+    </div>
+</div>

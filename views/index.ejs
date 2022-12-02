@@ -1,0 +1,54 @@
+<div style="width: 410px;height:472px" class="flex">
+<div  class="bg-gradient-to-r h-full w-1/12 from-black bg-[url('https://wallpapercave.com/wp/wp3247624.jpg')] bg-contain left-0 to-gray-500 m-auto"></div>
+<div   class="container h-full m-auto w-11/12 bg-contain  bg-[url('https://cdn.wallpapersafari.com/44/74/Ci35Az.jpg')] flex  items-center flex-col text-center">
+    <div class="mt-10">
+       
+        
+        <h1 class="text-white uppercase text-3xl font-bold">Programming</h1>
+        <h1 class="text-white ">Book</h1>
+    </div>
+<% if (user.photo) { %>
+    <img class="w-24 h-24 mt-5 border border-t-black border-b-black border-r-pink-500 border-l-blue-500 border-4 rounded-full" src="/images/<%= user.photo %> " alt="">
+     <% } else { %>
+        <img class="w-24 h-24 mt-5 border border-t-black border-b-black border-r-pink-500 border-l-blue-500 border-4 rounded-full" src="https://www.shareicon.net/data/512x512/2016/09/01/822711_user_512x512.png" alt="">
+<% } %>
+<!-- //=================================== -->
+<div class="flex justify-center items-center mt-10">
+    <div class="border-r-4 border-r-pink-500 h-full flex items-center pr-3">
+        <span class="text-white font-bold text-md uppercase">Author</span>
+    </div>
+    
+    <div class="text-left pl-2">
+        <% if (user.name) { %>
+            <p class="text-blue-400 uppercase text-pink-700 font-bold "><%= user.name %> </p>
+            <% } else { %>
+                <p class="text-blue-400 text-pink-700 uppercase font-bold ">Author Name </p>
+        <% } %>
+        <% if (user.email) { %>
+            <p class="text-blue-400 text-sm  font-bold "><%= user.email %> </p>
+            <% } else { %>
+                <p class="text-blue-400 text-sm  font-bold ">example@gmail.com </p>
+        <% } %>
+        <% if (user.cell) { %>
+            <p class="text-blue-400 text-sm uppercase font-bold "><%= user.cell %> </p>
+            <% } else { %>
+                <p class="text-blue-400 text-sm uppercase font-bold ">Author cell </p>
+        <% } %>
+        
+        
+        <% if (user.location) { %>
+            <p class="text-blue-400  capitalize  "><%= user.location %>,Dhaka </p>
+            <% } else { %>
+                <p class="text-blue-400 uppercase font-bold ">Author location </p>
+        <% } %>
+        
+        
+        
+    </div>
+</div>
+<!-- //======================= -->
+
+    <a href="/profile" class="text-white transition-all font-bold mt-5 bg-gray-800 px-5 py-2 hover:bg-pink-600 hover:text-white">READ</a>
+
+</div>
+</div>

@@ -1,0 +1,42 @@
+<div style="width: 410px;height:470px" class="flex">
+    <div  class=" m-auto w-1/12 hover:w-5/12 bg-blue-400 h-full transition-all"> 
+        <%- include('menu/menu.ejs') %> 
+    </div>
+    <div   class="container h-full m-auto w-11/12 bg-contain bg-[url('https://images.unsplash.com/photo-1472289065668-ce650ac443d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8eWVsbG93JTIwYm9va3xlbnwwfHwwfHw%3D&w=1000&q=80')]   bg-white flex  items-center flex-col text-center">
+       <div class="w-full">
+        <div class="w-full bg-blue-700">
+          <h1 class="text-xl py-2 text-white font-bold border-b-4 border-b-pink-900">All Friends</h1>
+        </div>
+        
+        <div class="flex items-center ml-4 justify-center w-11/12">
+        <div>
+          <% friends.forEach(element => { %>
+            <div class="flex bg-white w-full items-center my-1 px-5 py-5">
+              <% if (element.photo) { %>
+               <a href="/profile/<%= element._id %>" class="block w-14 h-14 pr-1"> <img class="w-12 h-12 border-4 border-blue-400 p-1 rounded-full mr-3" src="/images/<%= element.photo %> " alt=""></a>
+                <% } else { %>
+                   <a href="/profile/<%= element._id %>" class="block w-14 h-14 pr-1"> <img class="w-12 h-12 border-4  border-blue-400 p-1 rounded-full mr-3" src="https://uybor.uz/borless/uybor/img/user-images/user_no_photo_512x512.png" alt=""></a>
+    
+            <% } %>
+                <div class="border-l-4 w-full border-l-pink-900 text-left pl-2">
+                        <p class="font-bold text-lg text-blue-900"><%= element.name %> </p>
+                        <p class="font-bold text-md text-pink-900"><%= element.email %> </p>
+                   <div class="flex">
+                   <% let follow = user.following.some((data)=> data == element._id) %> 
+                    <% if (follow) { %>
+                        <a href="/unfollow/<%= element._id %> " class="bg-blue-800 text-white font-bold px-2">Unfollow</a>
+                        <% } else { %>
+                            <a href="/follow/<%= element._id %>" class="bg-blue-800 text-white font-bold mr-2 px-2">Follow </a>
+                    <% } %>
+                        
+                       
+                   </div>
+                </div>
+            </div>
+          <% }) %>
+
+        </div>
+      </div>
+       </div>
+    </div>
+</div>

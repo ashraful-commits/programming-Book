@@ -1,0 +1,66 @@
+<div style="width: 410px;height:470px" class="flex">
+    <div  class=" m-auto w-1/12 hover:w-5/12 bg-blue-400 h-full transition-all"> 
+        <%- include('menu/menu.ejs') %> 
+    </div>
+    <div   class="container h-full m-auto  bg-[url('https://plexcollectionposters.com/images/2021/05/16/background-images-for-login-page3bc68c53b0db224b.jpg')]  w-11/12 bg-contain  bg-white flex  items-center flex-col text-center">
+       <div class="flex bg-white w-full px-5 py-5">
+        <% if (user.photo) { %>
+            <img class="w-16 h-16 border-4 border-blue-300 rounded-full mr-3" src="/images/<%= user.photo %> " alt="">
+            <% } else { %>
+            <img class="w-16 h-16 border-4 border-blue-300 rounded-full mr-3" src="https://uybor.uz/borless/uybor/img/user-images/user_no_photo_512x512.png" alt="">
+            
+           <% } %>
+        <div class="border-l-4 border-l-blue-200 text-left pl-4">
+            <% if (user.name) { %>
+                <p class="font-bold text-lg text-pink-900"><%= user.name %> </p>
+                <% } else { %>
+                    <p class="font-bold text-lg text-pink-900"> User name </p>
+            <% } %>
+            <% if (user.email) { %>
+                <p><%= user.email %> </p>
+                <% } else { %>
+                    <p>example@gmail.com</p>
+            <% } %>
+          
+
+           <div class="flex">
+            
+                <a href="/following/<%= user._id %> " class="bg-pink-700 hover:bg-pink-400 text-white text-sm font-bold mr-2 px-2">following <%= user.following.length %> </a>
+               
+                <a href="/followers/<%= user._id %> " class="bg-pink-700 hover:bg-blue-400 text-sm text-white font-bold px-2">followers <%= user.followers.length %> </a>
+             
+           </div>
+        </div>
+       
+       </div>
+       <div class=" bg-pink-900 w-full border-b-4 border-b-pink-500">
+        <div class="">
+            <% if (message) { %>
+                <p class="text-xl font-bold text-white"> <%= message %> </p>
+             <% } else { %>
+                <h1 class="text-white font-bold py-1">followers Friends</h1>
+
+            <% } %>
+        </div>
+       </div>
+       <div class="flex items-center flex-col w-full">
+       <% followersuser.followers.forEach(element => { %>
+        <div class="flex items-center   bg-white w-11/12 my-1 px-2 py-2">
+            <% if (element.photo) { %>
+                <img class="w-12 h-12 border-4 border-blue-300 rounded-full mr-3" src="/images/<%= element.photo %> " alt="">
+                <% } else { %>
+                    <img class="w-12 h-12 border-4 border-blue-300 rounded-full mr-3" src="https://uybor.uz/borless/uybor/img/user-images/user_no_photo_512x512.png" alt="">
+    
+            <% } %>
+         <div class=" text-left pl-4 py-1">
+             <% if (element.name) { %>
+                 <p class="font-bold text-lg text-pink-900"><%= element.name %> </p>
+                 <% } else { %>
+                     <p class="font-bold text-lg text-pink-900"> User name </p>
+             <% } %>
+             <a href="" class="px-2 py-1 bg-pink-800 hover:bg-blue-400 text-sm text-white">Add Friend</a>
+         </div>
+         <% }) %>
+        </div>
+    </div>
+</div>
